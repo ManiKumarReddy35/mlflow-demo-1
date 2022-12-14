@@ -5,10 +5,7 @@ import numpy as np
 from sklearn.metrics import mean_squared_error,mean_absolute_error,r2_score
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import ElasticNet
-import os
-import time
 import argparse
-
 
 def get_data():
     URL= 'http://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv'
@@ -44,4 +41,8 @@ def modelling(a,l1):
         mlflow.sklearn.log_model(model,'model') ## logging the model
 
 if __name__=='__main__':
-    modelling(0.6,0.7) 
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--alpha',type=float)
+    parser.add_argument('--l1',type=float)
+    args = parser.parse_args()
+    modelling(args.alpha,args.l1) 

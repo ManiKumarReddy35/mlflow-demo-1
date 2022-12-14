@@ -1,0 +1,10 @@
+name : mlflow_demo
+
+conda_env : conda.yaml
+
+entry_points :
+  main:
+    parameters :
+      'alpha' : {type : float, default : 0.5}
+      'l1_ratio' : {type : float, default : 0.6}
+    command : "python application_code.py --alpha {alpha} --l1 {l1_ratio}"
